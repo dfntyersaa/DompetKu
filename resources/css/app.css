@@ -1,0 +1,42 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Poppins', 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-primary: #2EC4B6;
+    --color-primary-dark: #1FA39A;
+    --color-accent-yellow: #FFE66D;
+    --color-accent-blue: #4D96FF;
+    --color-accent-purple: #A66CFF;
+    --color-neutral-bg: #F8FAFC;
+    --color-neutral-card: #FFFFFF;
+    --color-neutral-text: #1F2937;
+    --color-neutral-text-secondary: #6B7280;
+}
+
+@layer components {
+    .btn-primary {
+        @apply bg-[#2EC4B6] hover:bg-[#1FA39A] text-white rounded-xl px-4 py-2 transition duration-200 font-semibold;
+    }
+
+    .btn-primary-lg {
+        @apply bg-[#2EC4B6] hover:bg-[#1FA39A] text-white rounded-xl px-6 py-3 transition duration-200 font-semibold w-full;
+    }
+
+    .card {
+        @apply bg-white rounded-2xl shadow-md p-5;
+    }
+
+    .input-field {
+        @apply rounded-xl border border-gray-200 px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-[#2EC4B6] focus:border-transparent transition;
+    }
+
+    .container-mobile {
+        @apply max-w-md mx-auto px-4;
+    }
+}
