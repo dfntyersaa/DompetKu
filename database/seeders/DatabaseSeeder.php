@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         User::create([
             'name' => 'Admin DompetKu',
-            'email' => 'admin@example.com', // Saya perbaiki typo "examle" jadi "example"
+            'email' => 'admin@example.com',
             'password' => Hash::make('admin123'),
         ]);
     }
