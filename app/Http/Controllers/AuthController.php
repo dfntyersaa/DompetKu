@@ -23,7 +23,10 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('dashboard')->with('success', 'Login berhasil!');
+            
+            // Cek role untuk menentukan pesan sukses (opsional)
+            $role = Auth::user()->role;
+            return redirect()->route('dashboard')->with('success', "Login berhasil sebagai $role!");
         }
 
         return back()->with('error', 'Email atau password salah');
@@ -42,11 +45,15 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed'
         ]);
 
+        // LOGIKA ROLE OTOMATIS:
+        // Ganti 'admin@example.com' dengan email admin yang kamu inginkan
+        $role = ($validated['email'] === 'admin@example.com') ? 'admin' : 'user';
+
         $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
-            'role' => 'user',
+            'role' => $role, // Menggunakan variabel role di atas
         ]);
 
         Auth::login($user);
